@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
+
+# Private / adult extension packages must stay outside the public repository.
+adult-pack/
+private-content/
+*.adult.json
+*.nsfw.json
