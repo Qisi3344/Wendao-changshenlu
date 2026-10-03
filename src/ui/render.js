@@ -10,7 +10,10 @@ export function render(app, router, state) {
   app.innerHTML = `
     <section class="world-frame">
       <header class="topbar">
-        <div class="crumb">${current.title}</div>
+        <div class="topbar-left">
+          <button class="back" ${current.parent ? "" : "hidden"} aria-label="返回上一层">〈 返回</button>
+          <div class="crumb">${current.title}</div>
+        </div>
         <div class="time">景和${state.time.year}年 · ${state.time.month}月 · ${state.time.hour}时　｜　${state.player.rank} · ${state.player.realm}</div>
       </header>
 
@@ -22,10 +25,5 @@ export function render(app, router, state) {
         ${children.length ? `<div class="location-grid">${children.map(x => button("location", ...x)).join("")}</div>` : ""}
         ${actions.length ? `<div class="action-list">${actions.map(x => button("action", ...x)).join("")}</div>` : ""}
       </section>
-
-      <footer class="footer">
-        <button class="back" ${current.parent ? "" : "hidden"}>〈 返回上一层</button>
-        <div class="notice">第一轮结构验证：进入下一层后，上一级内容完全退出视图。</div>
-      </footer>
     </section>`;
 }
